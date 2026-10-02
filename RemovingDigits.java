@@ -1,33 +1,31 @@
 import java.io.*;
 import java.util.*;
 
-public class CoinComb1 {
+public class RemovingDigits {
     static final int MINV = Integer.MIN_VALUE;
     static final int MAXV = Integer.MAX_VALUE;
     static final int MOD = 1_000_000_007;
 
     static void solve() throws IOException {
         int n = nextInt();
-        int x = nextInt();
-        int[] a =new int[n];
-        for (int i = 0; i<n ;i++) {
-            a[i]=nextInt();
+        int c = 0;
+        while (n>0) {
+            n-=maxDigit(n);
+            c++;
         }
 
-        long[] dp  = new long[x+1];
-        dp[0] = 1l;
-        for (int i = 0; i <= x; i++) {
-            for (int j = 0; j <n; j++) {
-                if (i - a[j] >= 0 ) {
-                    dp[i] += dp[i - a[j]];
-                    dp[i] %= MOD;
-                }
-            }
+        out.println(c);
+
+
+    }
+
+    static int maxDigit(int n) {
+        int mx = 0;
+        while (n>0) {
+            mx = Math.max(mx, n%10);
+            n/=10;
         }
-
-        out.println(dp[x]);
-
-
+        return mx;
     }
     static BufferedReader in;
     static PrintWriter out;
