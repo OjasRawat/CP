@@ -1,6 +1,6 @@
 for 0/1 knapsack, use 2D dp, dp[i][j] means max value till index i, such that max capacity is j
 dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-wt[i]]), i.e. max of (not taking the current element, taking the current element)
-
+consider book shop cses
 
 for unbounded knapsack problem, for each weight value, check for each element...
 consider coin comb cses
